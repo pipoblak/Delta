@@ -1,0 +1,171 @@
+﻿<Window x:Name="window" x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DELTA"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="360" Width="360" Background="{x:Null}" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" FontFamily="Corbel" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Window.Resources>
+        <Storyboard x:Key="Logo">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="lblConectarMouseEnter">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblConectar">
+                <EasingColorKeyFrame KeyTime="0" Value="#FF8D8D8D"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblConectar">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Hand</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="lblConectarMouseLeave">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblConectar">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblConectar">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Arrow</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="lblCloseEnter">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblClose">
+                <EasingColorKeyFrame KeyTime="0" Value="#FF8D8D8D"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblClose">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Hand</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="lblCloseLeave">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblClose">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Arrow</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblClose">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="lblRegistrarEnter">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblRegistrar">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Hand</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblRegistrar">
+                <EasingColorKeyFrame KeyTime="0" Value="#FF8D8D8D"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="LblRegistrarLeave" >
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="lblRegistrar">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Cursor)" Storyboard.TargetName="lblRegistrar">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Cursor>Arrow</Cursor>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="LoadingLogo" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="logo"  >
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="Logo_BeginStoryboard" Storyboard="{StaticResource Logo}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="lblConectar">
+            <BeginStoryboard x:Name="ZoomClose_BeginStoryboard1" Storyboard="{StaticResource lblConectarMouseEnter}"/>
+        </EventTrigger>
+     
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="lblConectar">
+            <BeginStoryboard x:Name="lblConectarMouseLeave_BeginStoryboard" Storyboard="{StaticResource lblConectarMouseLeave}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="lblClose">
+            <BeginStoryboard x:Name="lblCloseEnter_BeginStoryboard" Storyboard="{StaticResource lblCloseEnter}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="lblClose">
+            <BeginStoryboard x:Name="lblCloseLeave_BeginStoryboard" Storyboard="{StaticResource lblCloseLeave}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="lblRegistrar">
+            <BeginStoryboard x:Name="lblRegistrarEnter_BeginStoryboard" Storyboard="{StaticResource lblRegistrarEnter}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="lblRegistrar">
+            <BeginStoryboard x:Name="LblRegistrarLeave_BeginStoryboard" Storyboard="{StaticResource LblRegistrarLeave}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border ClipToBounds="True" CornerRadius="0,0,10,10" Background="#FF151515" x:Name="brdLogin" BorderBrush="White" BorderThickness="1" >
+        <Canvas x:Name="cnvsLogin" >
+            <Label x:Name="lblClose" Content="x" Canvas.Left="340" Foreground="White" FontSize="16" Canvas.Top="-4" FontFamily="Corbel" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="lblLogin" Content="LOGIN" Canvas.Left="149" Canvas.Top="131" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Border BorderBrush="Black" Canvas.Top="168" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="120">
+                <TextBox x:Name="txtLogin" Height="18" Canvas.Left="163" TextWrapping="Wrap" Text="" Canvas.Top="186" Width="120" Background="{x:Null}" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+            <Label x:Name="lblSenha" Content="SENHA" Canvas.Left="146" Canvas.Top="205" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Border BorderBrush="Black" Canvas.Top="244" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="120">
+                <PasswordBox x:Name="txtPass" Height="18" Canvas.Left="163" Canvas.Top="186" Width="120" Background="{x:Null}" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White"/>
+            </Border>
+            <Label x:Name="lblRegistrar" Content="REGISTRAR" Canvas.Left="108" Canvas.Top="291" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.477,0.591"/>
+            <Label x:Name="lblDiv" Content="|" Canvas.Left="173" Canvas.Top="289" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.531,0.416" FontSize="13.333"/>
+            <Label x:Name="lblConectar" Content="CONECTAR" Canvas.Left="181" Canvas.Top="291" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.477,0.591"/>
+            <Path x:Name="logo" Fill="White" RenderTransformOrigin="0.47,0.535" Canvas.Left="154" Canvas.Top="50" Height="52.333" Width="52" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure IsClosed="True" StartPoint="45.8412689872012,51.999999031188">
+                            <LineSegment Point="25.8730153909757,11.8730156518097"/>
+                            <LineSegment Point="8.69841253635257,47.0158721399203"/>
+                            <LineSegment Point="31.9682533726534,47.0158721399203"/>
+                            <LineSegment Point="35.3650787061926,51.999999031188"/>
+                            <LineSegment Point="0,51.999999031188"/>
+                            <LineSegment Point="25.8730153909757,0"/>
+                            <LineSegment Point="51.999999031188,51.999999031188"/>
+                            <LineSegment Point="45.8412689872012,51.999999031188"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Border>
+
+</Window>
