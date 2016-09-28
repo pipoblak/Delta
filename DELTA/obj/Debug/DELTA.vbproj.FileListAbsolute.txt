@@ -16,3 +16,23 @@ C:\Users\FirstPlace\Documents\Testes\DELTA\DELTA\obj\Debug\MainWindow.g.vb
 C:\Users\FirstPlace\Documents\Testes\DELTA\DELTA\obj\Debug\MainWindow.baml
 C:\Users\FirstPlace\Documents\Testes\DELTA\DELTA\obj\Debug\Window1.g.vb
 C:\Users\FirstPlace\Documents\Testes\DELTA\DELTA\obj\Debug\Window1.baml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\DELTA.exe.config
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.exe
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.xml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.pdb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\DELTA.exe
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\DELTA.pdb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\DELTA.xml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.vbprojResolveAssemblyReference.cache
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\MainWindow.g.vb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\Application.g.vb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA_MarkupCompile.cache
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA_MarkupCompile.lref
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\MainWindow.baml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.g.resources
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.Resources.resources
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\DELTA.vbproj.GenerateResource.Cache
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmHome.g.vb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmHome.baml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\Simple Styles.baml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\Application.baml

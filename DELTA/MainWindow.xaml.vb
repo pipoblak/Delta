@@ -9,9 +9,10 @@
 
     Private Sub window_MouseUp(sender As Object, e As MouseButtonEventArgs) Handles window.MouseUp
         Me.Cursor = Cursors.Arrow
+        verifMove = True
     End Sub
 
-    Private Sub brdLogin_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles brdLogin.MouseLeftButtonDown
+    Private Sub canvasTop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles canvasTop.MouseLeftButtonDown
         If verifMove Then
             Me.Cursor = Cursors.SizeAll
             Me.DragMove()
@@ -32,18 +33,21 @@
         verifMove = False
     End Sub
     Private Sub lblConectar_MouseLeave(sender As Object, e As MouseEventArgs) Handles lblConectar.MouseLeave
-        verifMove = False
+        verifMove = True
     End Sub
 
     Private Sub lblConectar_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles lblConectar.MouseLeftButtonDown
         Try
+            animationLoading.GetIsPaused()
 
-            MsgBox(animationLoading.GetIsPaused)
         Catch ex As Exception
+            cnvsButtonsLoginRegister.IsEnabled = False
             animationLoading.Begin()
         End Try
 
-
+        Dim a As New FrmHome
+        Me.Hide()
+        a.Show()
 
 
     End Sub

@@ -6,12 +6,12 @@ DELTA
 </name>
 </assembly>
 <members>
-<member name="T:DELTA.Window1">
+<member name="T:DELTA.FrmHome">
 <summary>
-Window1
+FrmHome
 </summary>
 </member>
-<member name="M:DELTA.Window1.InitializeComponent">
+<member name="M:DELTA.FrmHome.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>

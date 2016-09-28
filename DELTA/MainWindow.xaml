@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DELTA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="360" Background="{x:Null}" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" FontFamily="Corbel" VerticalAlignment="Center" HorizontalAlignment="Center">
+        Title="MainWindow" Height="360" Width="360" Background="{x:Null}" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" FontFamily="Corbel" VerticalAlignment="Center" HorizontalAlignment="Center">
     <Window.Resources>
         <Storyboard x:Key="Logo">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
@@ -100,7 +100,7 @@
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="lblConectar">
             <BeginStoryboard x:Name="ZoomClose_BeginStoryboard1" Storyboard="{StaticResource lblConectarMouseEnter}"/>
         </EventTrigger>
-     
+
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="lblConectar">
             <BeginStoryboard x:Name="lblConectarMouseLeave_BeginStoryboard" Storyboard="{StaticResource lblConectarMouseLeave}"/>
         </EventTrigger>
@@ -120,7 +120,24 @@
 
     <Border ClipToBounds="True" CornerRadius="0,0,10,10" Background="#FF151515" x:Name="brdLogin" BorderBrush="White" BorderThickness="1" >
         <Canvas x:Name="cnvsLogin" >
-            <Label x:Name="lblClose" Content="x" Canvas.Left="340" Foreground="White" FontSize="16" Canvas.Top="-4" FontFamily="Corbel" RenderTransformOrigin="0.5,0.5">
+
+            <Canvas x:Name="canvasTop" Height="127" Width="351" Background="#FF151515" Canvas.Left="4">
+                <Path x:Name="logo" Fill="White" RenderTransformOrigin="0.47,0.535" Canvas.Left="154" Canvas.Top="50" Height="52.333" Width="52" Data="M45.841269,51.999999 L25.873015,11.873016 L8.6984125,47.015872 L31.968253,47.015872 L35.365079,51.999999 L0,51.999999 L25.873015,0 L51.999999,51.999999 L45.841269,51.999999 z" >
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+
+
+            </Canvas>
+
+
+            <Label x:Name="lblClose" Content="x" Canvas.Left="340" Foreground="White" FontSize="16" Canvas.Top="-4" FontFamily="Corbel" RenderTransformOrigin="0.5,0.5" ToolTip="Fechar">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -132,39 +149,17 @@
             </Label>
             <Label x:Name="lblLogin" Content="LOGIN" Canvas.Left="149" Canvas.Top="131" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Border BorderBrush="Black" Canvas.Top="168" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="120">
-                <TextBox x:Name="txtLogin" Height="18" Canvas.Left="163" TextWrapping="Wrap" Text="" Canvas.Top="186" Width="120" Background="{x:Null}" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox x:Name="txtLogin" Height="18" Canvas.Left="163" TextWrapping="Wrap" Text="" Canvas.Top="186" Width="120" Background="{x:Null}" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" ToolTip="Email de Login Rocketz"/>
             </Border>
             <Label x:Name="lblSenha" Content="SENHA" Canvas.Left="146" Canvas.Top="205" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Border BorderBrush="Black" Canvas.Top="244" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="120">
                 <PasswordBox x:Name="txtPass" Height="18" Canvas.Left="163" Canvas.Top="186" Width="120" Background="{x:Null}" BorderThickness="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White"/>
             </Border>
-            <Label x:Name="lblRegistrar" Content="REGISTRAR" Canvas.Left="108" Canvas.Top="291" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.477,0.591"/>
-            <Label x:Name="lblDiv" Content="|" Canvas.Left="173" Canvas.Top="289" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.531,0.416" FontSize="13.333"/>
-            <Label x:Name="lblConectar" Content="CONECTAR" Canvas.Left="181" Canvas.Top="291" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.477,0.591"/>
-            <Path x:Name="logo" Fill="White" RenderTransformOrigin="0.47,0.535" Canvas.Left="154" Canvas.Top="50" Height="52.333" Width="52" >
-                <Path.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Path.RenderTransform>
-                <Path.Data>
-                    <PathGeometry>
-                        <PathFigure IsClosed="True" StartPoint="45.8412689872012,51.999999031188">
-                            <LineSegment Point="25.8730153909757,11.8730156518097"/>
-                            <LineSegment Point="8.69841253635257,47.0158721399203"/>
-                            <LineSegment Point="31.9682533726534,47.0158721399203"/>
-                            <LineSegment Point="35.3650787061926,51.999999031188"/>
-                            <LineSegment Point="0,51.999999031188"/>
-                            <LineSegment Point="25.8730153909757,0"/>
-                            <LineSegment Point="51.999999031188,51.999999031188"/>
-                            <LineSegment Point="45.8412689872012,51.999999031188"/>
-                        </PathFigure>
-                    </PathGeometry>
-                </Path.Data>
-            </Path>
+            <Canvas x:Name="cnvsButtonsLoginRegister" Height="37" Canvas.Left="99" Canvas.Top="285" Width="160">
+                <Label x:Name="lblRegistrar" Content="REGISTRAR" Canvas.Left="8" Canvas.Top="6" Foreground="White" FontFamily="Corbel" RenderTransformOrigin="0.477,0.591"/>
+                <Label x:Name="lblConectar" Content="CONECTAR" Canvas.Left="82" Canvas.Top="6" Foreground="White" FontFamily="Corbel" HorizontalAlignment="Center" RenderTransformOrigin="0.477,0.591" />
+                <Label x:Name="lblDiv" Content="|" Canvas.Left="73" Canvas.Top="3" Foreground="White" FontFamily="Corbel" RenderTransformOrigin="0.531,0.416" FontSize="13.333"/>
+            </Canvas>
         </Canvas>
     </Border>
 
