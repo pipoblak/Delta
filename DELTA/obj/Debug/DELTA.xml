@@ -31,6 +31,16 @@ InitializeComponent
 Application Entry Point.
 </summary>
 </member>
+<member name="T:DELTA.FrmWave">
+<summary>
+FrmWave
+</summary>
+</member>
+<member name="M:DELTA.FrmWave.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:DELTA.MainWindow">
 <summary>
 MainWindow

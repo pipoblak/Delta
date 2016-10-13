@@ -46,9 +46,9 @@
         End Try
 
         Dim a As New FrmHome
-        Me.Hide()
-        a.Show()
 
+        a.Show()
+        Me.Close()
 
     End Sub
 

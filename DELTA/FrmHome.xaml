@@ -6,7 +6,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DELTA"
         mc:Ignorable="d"
-        Title="FrmHome" Height="536" Width="910" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}">
+        Title="FrmHome" Height="536" Width="910" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Storyboard x:Key="OnLoaded1" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="cnvscooler1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="cnvscooler2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="cnvscooler3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseUpExpert">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtExpert">
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF8F8686"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseUPSIilent">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="txtSilent">
+                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FF8F8686"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
 
 
@@ -17,23 +51,11 @@
             </Canvas>
             <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="288"/>
             <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="289" Canvas.Left="620"/>
-            <Canvas x:Name="cnvsCpu" Height="30" Canvas.Left="810.997" Canvas.Top="75" Width="100">
-                <Border x:Name="CPUHOLDER" BorderBrush="White" BorderThickness="0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100">
+            <Button x:Name="btnClose" Content="✕" Height="18" Canvas.Left="871" Width="33" Background="#FF151515" Foreground="White" Canvas.Top="-1" FontFamily="Verdana" BorderBrush="White" Style="{DynamicResource BtnClose}" ToolTip="Fechar" FontSize="10.667" Click="btnClose_Click"/>
+            <Button x:Name="btnMinimize" Content="_" Height="18" Canvas.Left="848" Width="23" Background="#FF151515" Foreground="White" Canvas.Top="-1" FontFamily="Verdana" BorderBrush="White" FontWeight="Bold" Style="{DynamicResource BtnMinimize}" ToolTip="Minimizar" Click="btnMinimize_Click"/>
 
-                    <Border BorderBrush="White" BorderThickness="1,1,0,0" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100" Canvas.Left="808" Canvas.Top="75" RenderTransformOrigin="0.5,0.5" Margin="-15,-1,0,-1">
-                        <Border.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="45"/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Border.RenderTransform>
-                    </Border>
-
-
-
-                </Border>
+            <Canvas x:Name="cnvsCpu" Height="30" Canvas.Left="810.997" Canvas.Top="75" Width="100" ToolTip="Processador">
+                <Path Data="M0,0l34.6,34.5h108.3V0H0z M142.4,33.5H35L2.5,1h139.9V33.5z" Fill="White" Canvas.Left="-30.835" Canvas.Top="-0.335" Height="30.597" Stretch="Fill" Width="129.4"></Path>
                 <Canvas x:Name="cnvsInfoCpu" Height="27.992" Canvas.Left="3.503" Canvas.Top="0.508" Width="76.86">
                     <Label x:Name="label1" Content="100%" Canvas.Left="33" Canvas.Top="2.992" FontFamily="BatmanForeverAlternate" Foreground="White"/>
                     <Label x:Name="label3" Content="60ºC" Canvas.Left="66" Canvas.Top="13.5" Foreground="White" FontSize="9.333" FontFamily="Courier New" RenderTransformOrigin="0.407,-0.095"/>
@@ -77,8 +99,8 @@
 
                 </Canvas>
             </Canvas>
-            <Canvas x:Name="cnvsGPU" Height="30" Canvas.Left="810.997" Canvas.Top="114" Width="100">
-                <Border x:Name="CPUHOLDER1" BorderBrush="White" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100"/>
+            <Canvas x:Name="cnvsGPU" Height="30" Canvas.Left="810.997" Canvas.Top="114" Width="100" ToolTip="Placa de Vídeo">
+                <Border x:Name="CPUHOLDER1" BorderBrush="White" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100" />
                 <Canvas x:Name="cnvsGPUInfo" Height="27.992" Canvas.Left="3.503" Canvas.Top="0.508" Width="76.86">
                     <Label x:Name="label2" Content="100%" Canvas.Left="33" Canvas.Top="2.992" FontFamily="BatmanForeverAlternate" Foreground="White"/>
                     <Label x:Name="label4" Content="60ºC" Canvas.Left="66" Canvas.Top="13.5" Foreground="White" FontSize="9.333" FontFamily="Courier New" RenderTransformOrigin="0.407,-0.095"/>
@@ -98,8 +120,148 @@
 
                 </Canvas>
             </Canvas>
-            <Button x:Name="btnClose" Content="✕" Height="18" Canvas.Left="871" Width="33" Background="#FF151515" Foreground="White" Canvas.Top="-1" FontFamily="Verdana" BorderBrush="White" Style="{DynamicResource BtnClose}" ToolTip="Fechar" FontSize="10.667" />
-            <Button x:Name="btnMinimize" Content="_" Height="18" Canvas.Left="848" Width="23" Background="#FF151515" Foreground="White" Canvas.Top="-1" FontFamily="Verdana" BorderBrush="White" FontWeight="Bold" Style="{DynamicResource BtnMinimize}" ToolTip="Minimizar"/>
+            <Canvas x:Name="cnvsMemory" Height="30" Canvas.Left="810.997" Canvas.Top="153" Width="100" ToolTip="Memória">
+                <Border x:Name="CPUHOLDER2" BorderBrush="White" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100" />
+                <Canvas x:Name="cnvsMemoryInfo" Height="27.992" Canvas.Left="3.503" Canvas.Top="0.508" Width="76.86">
+                    <Label x:Name="lblMemoryUsage" Content="100%" Canvas.Left="33" Canvas.Top="2.992" FontFamily="BatmanForeverAlternate" Foreground="White"/>
+
+                    <Canvas Height="17.154" Width="20.506" RenderTransformOrigin="0.577,0.582" Canvas.Left="2.994" Canvas.Top="6.255">
+
+
+
+
+
+                        <Path x:Name="memoryStruct" Fill="White"  Data="M442.5,60.8c0-27,29.2-29.2,29.2-29.2V17.9c0,0-4.5-17.9-17.9-17.9C440.4,0,19.2,0,19.2,0S0,3.8,0,19.2v13.2
+	c0,0,29.6,1.4,29.6,29.6c0,28.2-29.4,29.4-29.4,29.4v99.8c0,0,3.5,20.9,20.9,20.9s31.1,0,31.1,0s0.6-29.2,29.2-29.2
+	s28.4,28.8,28.4,28.8h344.7c0,0,18.1-4.5,18.1-18.1c0-13.6,0-102.6,0-102.6S442.5,87.8,442.5,60.8z M134.9,142.4c0,3.8-3.2,7-7,7
+	H80.3c-3.9,0-7-3.2-7-7V52c0-3.8,3.1-7,7-7h47.7c3.8,0,7,3.2,7,7V142.4z M221.9,142.4c0,3.8-3.2,7-7,7h-47.7c-3.9,0-7-3.2-7-7V52
+	c0-3.8,3.1-7,7-7h47.7c3.8,0,7,3.2,7,7V142.4z M307.6,142.4c0,3.8-3.1,7-7,7h-47.7c-3.8,0-7-3.2-7-7V52c0-3.8,3.2-7,7-7h47.7
+	c3.9,0,7,3.2,7,7V142.4z M393.6,142.4c0,3.8-3.1,7-7,7h-47.7c-3.8,0-7-3.2-7-7V52c0-3.8,3.2-7,7-7h47.7c3.9,0,7,3.2,7,7V142.4z" Stretch="Fill" Canvas.Top="3.674" Height="9.1" Width="20.277" />
+                    </Canvas>
+
+
+                </Canvas>
+            </Canvas>
+            <Canvas x:Name="cnvsHD" Height="30" Canvas.Left="810.997" Canvas.Top="192.5" Width="100" ToolTip="Disco Rígido">
+                <Border x:Name="CPUHOLDER3" BorderBrush="White" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="100"/>
+                <Canvas x:Name="cnvsHDInfo" Height="27.992" Canvas.Left="3.503" Canvas.Top="0.508" Width="76.86">
+                    <Label x:Name="lblHDUsage" Content="100%" Canvas.Left="33" Canvas.Top="2.992" FontFamily="BatmanForeverAlternate" Foreground="White"/>
+
+                    <Canvas Height="17.154" Width="20.506" RenderTransformOrigin="0.577,0.582" Canvas.Left="2.994" Canvas.Top="6.255">
+
+
+
+
+
+                        <Path x:Name="hdStruct" Fill="White"  Data="M310.7,0H7.8C3.5,0,0,3.5,0,7.9v395.3c0,4.4,3.5,7.9,7.8,7.9h302.9c4.3,0,7.8-3.5,7.8-7.9V7.9
+			C318.6,3.5,315,0,310.7,0z M38.3,390.5c-9.8,0-17.7-7.9-17.7-17.7c0-9.8,7.9-17.7,17.7-17.7c9.8,0,17.7,7.9,17.7,17.7
+			C56,382.5,48.1,390.5,38.3,390.5z M38.3,56c-9.8,0-17.7-7.9-17.7-17.7c0-9.8,7.9-17.7,17.7-17.7c9.8,0,17.7,7.9,17.7,17.7
+			C56,48.1,48.1,56,38.3,56z M226.6,384.3H91.7v-22h134.9V384.3L226.6,384.3z M254.4,300.6c-5.1,5.1-11.9,7.9-19.1,7.9
+			c-7.2,0-14-2.8-19.1-7.9c-3.4-3.4-21.3-26.4-38.9-49.5c-5.9,1.1-11.9,1.7-18,1.7c-55.8,0-101.1-45.3-101.1-101.1
+			c0-55.8,45.3-101.1,101.1-101.1c55.8,0,101.1,45.3,101.1,101.1c0,33.8-16.7,63.7-42.2,82.1c18,13.8,33.5,26,36.2,28.7
+			C264.9,273,264.9,290.1,254.4,300.6z M280.3,390.5c-9.8,0-17.7-7.9-17.7-17.7c0-9.8,7.9-17.7,17.7-17.7c9.8,0,17.7,7.9,17.7,17.7
+			C298,382.5,290.1,390.5,280.3,390.5z M280.3,56c-9.8,0-17.7-7.9-17.7-17.7c0-9.8,7.9-17.7,17.7-17.7S298,28.5,298,38.3
+			C298,48.1,290.1,56,280.3,56z" Stretch="Fill" Canvas.Top="0.049" Height="17.125" Width="13.434" Canvas.Left="3.458" />
+                        <Path x:Name="agulhaHD" Fill="White"  Data="M153.7,199.9c0,0,65.5,86.3,71.2,92.1c5.8,5.8,15.1,5.8,20.9,0c5.8-5.8,5.8-15.1,0-20.9
+			C240,265.4,153.7,199.9,153.7,199.9z" Stretch="Fill" Canvas.Top="8.466" Canvas.Left="9.875" Height="4" Width="4.239" />
+                        <Path x:Name="circuloHd" Fill="White"  Data="M180.5,151.7c0-11.7-9.5-21.2-21.2-21.2c-11.7,0-21.2,9.5-21.2,21.2s9.5,21.2,21.2,21.2
+			C171,172.9,180.5,163.4,180.5,151.7z" Height="2.387" Stretch="Fill" Width="2.387" Canvas.Left="8.919" Canvas.Top="5.319" />
+                    </Canvas>
+
+
+                </Canvas>
+            </Canvas>
+
+            <Canvas x:Name="cnvsDeviceStatus" Height="43.5" Width="50.718" RenderTransformOrigin="0.496,0.472" Canvas.Left="856.782" Canvas.Top="489" ToolTip="Dispositivo Desconectado">
+                <Label Content="&#xF108;" FontFamily="FontAwesome" Foreground="White" FontSize="32" Canvas.Left="-4.5" />
+                <Label x:Name="lblDeviceStatus" Content="&#xF057;" FontFamily="FontAwesome" Foreground="White" FontSize="13.333" Canvas.Left="28.5" Canvas.Top="22.5" ></Label>
+
+            </Canvas>
+
+            <Canvas Height="57" Width="690" Canvas.Left="61.5" Canvas.Top="133.5">
+                <Slider x:Name="slider" Style="{StaticResource MyCustomStyleForSlider}" Height="16.8" Canvas.Left="6" Canvas.Top="19" Width="180" Maximum="255" SmallChange="0"/>
+                <Label Content="RPM" Canvas.Left="180" Canvas.Top="10.668" Foreground="#FF4D4D4D" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="COOLER" Canvas.Left="-0.667" Canvas.Top="-7.333" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="1" Canvas.Left="51.996" Canvas.Top="-7.336" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="13.333"/>
+
+
+                <Slider x:Name="slider2" Style="{StaticResource MyCustomStyleForSlider}" Height="15" Canvas.Left="240" Canvas.Top="19" Width="180" Maximum="255"/>
+                <Label x:Name="labela" Content="RPM" Canvas.Left="414" Canvas.Top="11" Foreground="#FF4D4D4D" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="COOLER" Canvas.Left="233.333" Canvas.Top="-7.333" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="2" Canvas.Left="285.996" Canvas.Top="-7.336" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="13.333"/>
+
+                <Slider x:Name="slider3" Style="{StaticResource MyCustomStyleForSlider}"  Height="15" Canvas.Left="476" Canvas.Top="19" Width="180" Maximum="255"/>
+                <Label x:Name="label2a" Content="RPM" Canvas.Left="650" Canvas.Top="10.668" Foreground="#FF4D4D4D" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="COOLER" Canvas.Left="469.333" Canvas.Top="-7.333" Foreground="#FFADADAD" FontFamily="Corbel" FontSize="13.333"/>
+                <Label  Content="3" Canvas.Left="521.996" Canvas.Top="-8.006" Foreground="#FFADADAD" FontFamily="Corbel"/>
+
+
+            </Canvas>
+
+            <Border x:Name="borderCoolers" BorderBrush="White" BorderThickness="1" Canvas.Left="61.5" Canvas.Top="192.496">
+                <Canvas Height="170" Width="690" Canvas.Left="49.5" Canvas.Top="156">
+                    <Canvas x:Name="cnvscooler1" Height="169" Width="230" RenderTransformOrigin="0.5,0.5">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                        <Path Data="M506.8,203.9C440.8,37.5,310,136.3,302.5,142.2c-3.1-1.6-6.4-3-9.7-4.3c3.2-61.1,60.3-120.6,60.3-120.6	c13.9-13.9-2.8-14.6-2.8-14.6C174.7-22.7,193.5,137.1,195.1,148.9c-2.2,1.5-4.4,3-6.5,4.7c-0.2-0.1-0.4-0.2-0.6-0.3	C134,123.6,106,44.4,106,44.4c-6.2-18.6-14.3-4.1-14.3-4.1C-2.3,174.8,119.8,232,147.8,242.9c0.2,3.2,0.5,6.4,0.9,9.5	C94.3,281.6,12.8,262,12.8,262c-19-4.9-11.2,9.8-11.2,9.8c65,160,188.4,72.5,203.6,60.8c2.8,1.4,5.6,2.8,8.5,4	c0,0.6-0.1,1.1-0.1,1.7c-2.2,61.6-60.4,122.2-60.4,122.2c-13.9,13.9,2.8,14.6,2.8,14.6c178.6,25.9,156.2-139.8,155.2-146.7	c3.3-2.1,6.5-4.3,9.6-6.7c26,16.5,44.8,45,57,69.4c12.2,24.3,17.9,44.5,17.9,44.5c5,19,14,5,14,5c115-144-48.3-208.1-48.3-208.1	c-0.2-3.7-0.5-7.4-1.1-11c54.6-28.1,135.2-8,135.2-8C514.5,218.6,506.8,203.9,506.8,203.9z M253.2,321.2	c-46.5,0-84.3-37.7-84.3-84.3c0-46.5,37.7-84.3,84.3-84.3c46.5,0,84.2,37.7,84.2,84.3C337.5,283.5,299.8,321.2,253.2,321.2z" Fill="White" Stretch="Fill" Canvas.Left="53.001" Canvas.Top="27.182" Height="116.68" Width="125.131"/>
+
+                        <Path Data="M312.7,237.4c0,32.6-26.4,59-59,59s-59-26.4-59-59c0-32.6,26.4-59,59-59S312.7,204.8,312.7,237.4z" Fill="White" Stretch="Fill" Canvas.Left="96.496" Canvas.Top="66.216" Height="37.664" Width="37.664" RenderTransformOrigin="0.5,0.5">
+
+                        </Path>
+                    </Canvas>
+                    <Canvas x:Name="cnvscooler2" Height="169" Width="230" Canvas.Left="230.001" RenderTransformOrigin="0.5,0.5">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                        <Path Data="M506.8,203.9C440.8,37.5,310,136.3,302.5,142.2c-3.1-1.6-6.4-3-9.7-4.3c3.2-61.1,60.3-120.6,60.3-120.6	c13.9-13.9-2.8-14.6-2.8-14.6C174.7-22.7,193.5,137.1,195.1,148.9c-2.2,1.5-4.4,3-6.5,4.7c-0.2-0.1-0.4-0.2-0.6-0.3	C134,123.6,106,44.4,106,44.4c-6.2-18.6-14.3-4.1-14.3-4.1C-2.3,174.8,119.8,232,147.8,242.9c0.2,3.2,0.5,6.4,0.9,9.5	C94.3,281.6,12.8,262,12.8,262c-19-4.9-11.2,9.8-11.2,9.8c65,160,188.4,72.5,203.6,60.8c2.8,1.4,5.6,2.8,8.5,4	c0,0.6-0.1,1.1-0.1,1.7c-2.2,61.6-60.4,122.2-60.4,122.2c-13.9,13.9,2.8,14.6,2.8,14.6c178.6,25.9,156.2-139.8,155.2-146.7	c3.3-2.1,6.5-4.3,9.6-6.7c26,16.5,44.8,45,57,69.4c12.2,24.3,17.9,44.5,17.9,44.5c5,19,14,5,14,5c115-144-48.3-208.1-48.3-208.1	c-0.2-3.7-0.5-7.4-1.1-11c54.6-28.1,135.2-8,135.2-8C514.5,218.6,506.8,203.9,506.8,203.9z M253.2,321.2	c-46.5,0-84.3-37.7-84.3-84.3c0-46.5,37.7-84.3,84.3-84.3c46.5,0,84.2,37.7,84.2,84.3C337.5,283.5,299.8,321.2,253.2,321.2z" Fill="White" Stretch="Fill" Canvas.Left="53.001" Canvas.Top="27.182" Height="116.68" Width="125.131"/>
+
+                        <Path Data="M312.7,237.4c0,32.6-26.4,59-59,59s-59-26.4-59-59c0-32.6,26.4-59,59-59S312.7,204.8,312.7,237.4z" Fill="White" Stretch="Fill" Canvas.Left="96.496" Canvas.Top="66.216" Height="37.664" Width="37.664" RenderTransformOrigin="0.5,0.5">
+
+                        </Path>
+                    </Canvas>
+
+                    <Canvas x:Name="cnvscooler3" Height="169" Width="230" Canvas.Left="458.001" RenderTransformOrigin="0.5,0.5">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                        <Path Data="M506.8,203.9C440.8,37.5,310,136.3,302.5,142.2c-3.1-1.6-6.4-3-9.7-4.3c3.2-61.1,60.3-120.6,60.3-120.6	c13.9-13.9-2.8-14.6-2.8-14.6C174.7-22.7,193.5,137.1,195.1,148.9c-2.2,1.5-4.4,3-6.5,4.7c-0.2-0.1-0.4-0.2-0.6-0.3	C134,123.6,106,44.4,106,44.4c-6.2-18.6-14.3-4.1-14.3-4.1C-2.3,174.8,119.8,232,147.8,242.9c0.2,3.2,0.5,6.4,0.9,9.5	C94.3,281.6,12.8,262,12.8,262c-19-4.9-11.2,9.8-11.2,9.8c65,160,188.4,72.5,203.6,60.8c2.8,1.4,5.6,2.8,8.5,4	c0,0.6-0.1,1.1-0.1,1.7c-2.2,61.6-60.4,122.2-60.4,122.2c-13.9,13.9,2.8,14.6,2.8,14.6c178.6,25.9,156.2-139.8,155.2-146.7	c3.3-2.1,6.5-4.3,9.6-6.7c26,16.5,44.8,45,57,69.4c12.2,24.3,17.9,44.5,17.9,44.5c5,19,14,5,14,5c115-144-48.3-208.1-48.3-208.1	c-0.2-3.7-0.5-7.4-1.1-11c54.6-28.1,135.2-8,135.2-8C514.5,218.6,506.8,203.9,506.8,203.9z M253.2,321.2	c-46.5,0-84.3-37.7-84.3-84.3c0-46.5,37.7-84.3,84.3-84.3c46.5,0,84.2,37.7,84.2,84.3C337.5,283.5,299.8,321.2,253.2,321.2z" Fill="White" Stretch="Fill" Canvas.Left="53.001" Canvas.Top="27.182" Height="116.68" Width="125.131"/>
+
+                        <Path Data="M312.7,237.4c0,32.6-26.4,59-59,59s-59-26.4-59-59c0-32.6,26.4-59,59-59S312.7,204.8,312.7,237.4z" Fill="White" Stretch="Fill" Canvas.Left="96.496" Canvas.Top="66.216" Height="37.664" Width="37.664" RenderTransformOrigin="0.5,0.5">
+
+                        </Path>
+                    </Canvas>
+                    <TextBlock x:Name="lblCooler1" Foreground="#FF151515" Canvas.Left="93.33" Canvas.Top="78.307" FontFamily="BatmanForeverAlternate" Width="45" TextAlignment="Center"/>
+                    <TextBlock x:Name="lblCooler2" Foreground="#FF151515" Canvas.Left="323.33" Canvas.Top="78.307" FontFamily="BatmanForeverAlternate" Width="45" TextAlignment="Center"/>
+                    <TextBlock x:Name="lblCooler3" Foreground="#FF151515" Canvas.Left="550.663" Canvas.Top="78.307" FontFamily="BatmanForeverAlternate" Width="45" TextAlignment="Center"/>
+
+                </Canvas>
+
+            </Border>
+
+            <TextBlock x:Name="txtExpert" Text="EXPERT" Canvas.Left="335" Canvas.Top="373.496" Foreground="White" FontFamily="Corbel" FontSize="18.667"/>
+            <TextBlock  Text="|" Canvas.Left="405.5" Canvas.Top="370.496" Foreground="White" FontFamily="Corbel" FontSize="21.333"/>
+
+            <TextBlock x:Name="txtSilent" Text="SILENT" Canvas.Left="417.5" Canvas.Top="373.496" Foreground="White" FontFamily="Corbel" FontSize="18.667"/>
+
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="910.5" Canvas.Top="423" Canvas.Left="0.5"/>
+
+
         </Canvas>
 
 

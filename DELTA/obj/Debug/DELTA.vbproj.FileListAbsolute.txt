@@ -36,3 +36,21 @@ C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmHome.g.vb
 C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmHome.baml
 C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\Simple Styles.baml
 C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\Application.baml
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmWave.g.vb
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\FirstPlace\Desktop\DELTA\DELTA\obj\Debug\FrmWave.baml
