@@ -349,6 +349,8 @@ Public Class FrmWave
     Private Sub btnSincro_Click(sender As Object, e As RoutedEventArgs) Handles btnSincro.Click
         If staticLogoEnabled = True And staticTopEnabled = True Then
             porta.Write("#R" & corPadrao.R & "G" & corPadrao.G & "B" & corPadrao.B & "S0")
+            cnvsGabinete.Background = brushPadrao
+            TOP.Fill = brushPadrao
         ElseIf waveLogoEnabled = True And waveTopEnabled = True Then
             porta.Write("@0D5S0")
         ElseIf pulseLogoEnabled = True And pulseTopEnabled = True Then
