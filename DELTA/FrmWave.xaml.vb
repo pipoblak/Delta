@@ -9,6 +9,8 @@ Public Class FrmWave
     Dim incomingData As String
     Dim porta As New System.IO.Ports.SerialPort
     Dim dispatcherTimer As New DispatcherTimer
+    Dim staticTopEnabled, pulseTopEnabled, waveTopEnabled As Boolean
+    Dim staticLogoEnabled, pulseLogoEnabled, waveLogoEnabled As Boolean
 #Region "TOP"
     Private Sub canvasTop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles canvasTop.MouseLeftButtonDown
         Me.Cursor = Cursors.SizeAll
@@ -46,9 +48,9 @@ Public Class FrmWave
     End Sub
     Private Sub colorpickerTop_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?)) Handles colorpickerTop.SelectedColorChanged
         Dim BrushColor As Brush
-        Dim selectColor As Color = colorpickerLogo.SelectedColor.GetValueOrDefault
+        Dim selectColor As Color = colorpickerTop.SelectedColor.GetValueOrDefault
         BrushColor = New SolidColorBrush(selectColor)
-        cnvsGabinete.Background = BrushColor
+        TOP.Fill = BrushColor
         Try
             System.Threading.Thread.Sleep(200)
 
@@ -260,6 +262,13 @@ Public Class FrmWave
         System.Threading.Thread.Sleep(100)
         colorpickerLogo.Visibility = Visibility.Visible
         cnvsGabineteChroma.Visibility = Visibility.Hidden
+
+        staticLogoEnabled = True
+        waveLogoEnabled = False
+        pulseLogoEnabled = False
+
+        setClicked()
+        verifySincro()
     End Sub
 
     Private Sub btnWAVE_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnWAVE.MouseLeftButtonDown
@@ -268,6 +277,12 @@ Public Class FrmWave
         colorpickerLogo.Visibility = Visibility.Hidden
         cnvsGabineteChroma.Visibility = Visibility.Visible
 
+        staticLogoEnabled = False
+        waveLogoEnabled = True
+        pulseLogoEnabled = False
+
+        setClicked()
+        verifySincro()
     End Sub
 
     Private Sub btnPULSE_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnPULSE.MouseLeftButtonDown
@@ -275,6 +290,13 @@ Public Class FrmWave
         System.Threading.Thread.Sleep(100)
         colorpickerLogo.Visibility = Visibility.Visible
         cnvsGabineteChroma.Visibility = Visibility.Hidden
+
+        staticLogoEnabled = False
+        waveLogoEnabled = False
+        pulseLogoEnabled = True
+
+        setClicked()
+        verifySincro()
     End Sub
     Private Sub btnSTATICTop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnSTATICTop.MouseLeftButtonDown
         porta.Write("@1D5S2")
@@ -282,6 +304,27 @@ Public Class FrmWave
         colorpickerTop.Visibility = Visibility.Visible
         TopChroma.Visibility = Visibility.Hidden
         TOP.Visibility = Visibility.Visible
+
+        staticTopEnabled = True
+        waveTopEnabled = False
+        pulseTopEnabled = False
+
+        setClicked()
+        verifySincro()
+    End Sub
+
+    Private Sub btnSincro_Click(sender As Object, e As RoutedEventArgs) Handles btnSincro.Click
+        If staticLogoEnabled = True And staticTopEnabled = True Then
+
+
+        ElseIf waveLogoEnabled = True And waveTopEnabled = True Then
+            porta.Write("@0D5S0")
+        ElseIf pulseLogoEnabled = True And pulseTopEnabled = True Then
+            porta.Write("@2D5S0")
+        End If
+
+
+
     End Sub
 
     Private Sub btnWAVETop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnWAVETop.MouseLeftButtonDown
@@ -291,6 +334,12 @@ Public Class FrmWave
         TopChroma.Visibility = Visibility.Visible
         TOP.Visibility = Visibility.Hidden
 
+        staticTopEnabled = False
+        waveTopEnabled = True
+        pulseTopEnabled = False
+
+        setClicked()
+        verifySincro()
     End Sub
 
     Private Sub btnPULSETop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnPULSETop.MouseLeftButtonDown
@@ -299,7 +348,62 @@ Public Class FrmWave
         colorpickerTop.Visibility = Visibility.Visible
         TopChroma.Visibility = Visibility.Hidden
         TOP.Visibility = Visibility.Visible
+
+        staticTopEnabled = False
+        waveTopEnabled = False
+        pulseTopEnabled = True
+
+        setClicked()
+        verifySincro()
     End Sub
 
+    Private Sub setClicked()
+
+        If staticLogoEnabled = True Then
+            btnSTATIC.Opacity = 0.4
+            btnWAVE.Opacity = 1
+            btnPULSE.Opacity = 1
+        ElseIf waveLogoEnabled = True Then
+            btnSTATIC.Opacity = 1
+            btnWAVE.Opacity = 0.4
+            btnPULSE.Opacity = 1
+        ElseIf pulseLogoEnabled = True Then
+            btnSTATIC.Opacity = 1
+            btnWAVE.Opacity = 1
+            btnPULSE.Opacity = 0.4
+
+        End If
+
+        If staticTopEnabled = True Then
+            btnSTATICTop.Opacity = 0.4
+            btnWAVETop.Opacity = 1
+            btnPULSETop.Opacity = 1
+        ElseIf waveTopEnabled = True Then
+            btnSTATICTop.Opacity = 1
+            btnWAVETop.Opacity = 0.4
+            btnPULSETop.Opacity = 1
+        ElseIf pulseTopEnabled = True Then
+            btnSTATICTop.Opacity = 1
+            btnWAVETop.Opacity = 1
+            btnPULSETop.Opacity = 0.4
+
+        End If
+
+    End Sub
+
+    Public Function verifySincro()
+
+        If staticLogoEnabled = True And staticTopEnabled = True Then
+
+
+        ElseIf waveLogoEnabled = True And waveTopEnabled = True Then
+            btnSincro.Visibility = Visibility.Visible
+        ElseIf pulseLogoEnabled = True And pulseTopEnabled = True Then
+            btnSincro.Visibility = Visibility.Visible
+        End If
+
+
+
+    End Function
 
 End Class

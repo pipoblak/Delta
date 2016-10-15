@@ -69,7 +69,7 @@
 
             </Canvas>
             <xctk:ColorPicker x:Name="colorpickerLogo" Width="102" Background="White" BorderBrush="Gainsboro" AvailableColorsHeader="Cores Padrão" StandardColorsHeader="Cores Padrão" UsingAlphaChannel="False" RecentColorsHeader="Cores Recentes" SelectedColor="White" SelectedColorChanged="ColorPicker_SelectedColorChanged" Height="22" Canvas.Left="78.833" Canvas.Top="227.667" StandardButtonHeader="Cores Padrão" ShowStandardColors="False" ColorMode="ColorCanvas" AvailableColorsSortingMode="HueSaturationBrightness" Visibility="Hidden"/>
-            <Canvas x:Name="cnvsButtonsLogo" Height="268" Width="70" Canvas.Left="218" Canvas.Top="99" Visibility="Hidden">
+            <Canvas x:Name="cnvsButtonsLogo" Height="268" Width="70" Canvas.Left="218" Canvas.Top="99">
                 <Canvas x:Name="btnSTATIC" Height="50" Width="50" Canvas.Left="11" Canvas.Top="17">
 
                     <Ellipse Height="50" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
@@ -114,7 +114,7 @@
                 <Path Data="M295.5,402.668 L56.397513,402.668" Fill="White" Height="1" Canvas.Left="53.732" Stretch="Fill" Stroke="White" Canvas.Top="110" Width="143.435"/>
                 <TextBlock  TextWrapping="Wrap" Text="TOP" Canvas.Top="49.666" Foreground="White" FontFamily="Earth Orbiter" FontSize="16" Canvas.Left="354.495"/>
             </Canvas>
-            <Canvas x:Name="cnvsButtonsTop" Height="268" Width="70" Canvas.Left="603" Canvas.Top="99" Visibility="Hidden">
+            <Canvas x:Name="cnvsButtonsTop" Height="268" Width="70" Canvas.Left="603" Canvas.Top="99">
                 <Canvas x:Name="btnSTATICTop" Height="50" Width="50" Canvas.Left="11" Canvas.Top="17">
 
                     <Ellipse Height="50" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
@@ -138,6 +138,7 @@
             </Canvas>
             <xctk:ColorPicker x:Name="colorpickerTop" Width="102" Background="White" BorderBrush="Gainsboro" AvailableColorsHeader="Cores Padrão" StandardColorsHeader="Cores Padrão" UsingAlphaChannel="False" RecentColorsHeader="Cores Recentes" SelectedColor="White" Height="22" Canvas.Left="711.833" Canvas.Top="227.667" StandardButtonHeader="Cores Padrão" ShowStandardColors="False" ColorMode="ColorCanvas" AvailableColorsSortingMode="HueSaturationBrightness" Visibility="Hidden"/>
             <Image x:Name="image1" Height="160" Canvas.Left="375" Canvas.Top="413.668" Width="160" Source="machine logo.png"/>
+            <Button x:Name="btnSincro" Canvas.Left="436"  Canvas.Top="380.668" FontFamily="FontAwesome" Foreground="White" FontSize="32" Content="&#xF079;" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden"/>
 
         </Canvas>
 
