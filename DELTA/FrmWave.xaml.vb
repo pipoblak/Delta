@@ -11,6 +11,8 @@ Public Class FrmWave
     Dim dispatcherTimer As New DispatcherTimer
     Dim staticTopEnabled, pulseTopEnabled, waveTopEnabled As Boolean
     Dim staticLogoEnabled, pulseLogoEnabled, waveLogoEnabled As Boolean
+    Dim brushPadrao As Brush
+    Dim corPadrao As Color
 #Region "TOP"
     Private Sub canvasTop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles canvasTop.MouseLeftButtonDown
         Me.Cursor = Cursors.SizeAll
@@ -32,7 +34,10 @@ Public Class FrmWave
     Private Sub ColorPicker_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?)) Handles colorpickerLogo.SelectedColorChanged
         Dim BrushColor As Brush
         Dim selectColor As Color = colorpickerLogo.SelectedColor.GetValueOrDefault
+
         BrushColor = New SolidColorBrush(selectColor)
+        brushPadrao = BrushColor
+        corPadrao = selectColor
         cnvsGabinete.Background = BrushColor
         Try
             System.Threading.Thread.Sleep(200)
@@ -49,7 +54,10 @@ Public Class FrmWave
     Private Sub colorpickerTop_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?)) Handles colorpickerTop.SelectedColorChanged
         Dim BrushColor As Brush
         Dim selectColor As Color = colorpickerTop.SelectedColor.GetValueOrDefault
+
         BrushColor = New SolidColorBrush(selectColor)
+        brushPadrao = BrushColor
+        corPadrao = selectColor
         TOP.Fill = BrushColor
         Try
             System.Threading.Thread.Sleep(200)
@@ -201,8 +209,13 @@ Public Class FrmWave
     End Sub
 
     Private Sub btnSTATIC_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnSTATIC.MouseLeave
-        btnSTATIC.Opacity = 1
-        Me.Cursor = Cursors.Arrow
+        If staticLogoEnabled = True Then
+
+        Else
+            btnSTATIC.Opacity = 1
+            Me.Cursor = Cursors.Arrow
+        End If
+
     End Sub
 
     Private Sub btnWAVE_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnWAVE.MouseEnter
@@ -211,12 +224,20 @@ Public Class FrmWave
     End Sub
 
     Private Sub btnWAVE_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnWAVE.MouseLeave
-        btnWAVE.Opacity = 1
+        If waveLogoEnabled = True Then
+        Else
+            btnWAVE.Opacity = 1
+        End If
+
         Me.Cursor = Cursors.Arrow
     End Sub
 
     Private Sub btnPulse_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnPULSE.MouseLeave
-        btnPULSE.Opacity = 1
+        If pulseLogoEnabled = True Then
+        Else
+            btnPULSE.Opacity = 1
+        End If
+
         Me.Cursor = Cursors.Arrow
     End Sub
     Private Sub btnPulse_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnPULSE.MouseEnter
@@ -230,7 +251,11 @@ Public Class FrmWave
     End Sub
 
     Private Sub btnSTATICTop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnSTATICTop.MouseLeave
-        btnSTATICTop.Opacity = 1
+        If staticTopEnabled = True Then
+        Else
+            btnSTATICTop.Opacity = 1
+        End If
+
         Me.Cursor = Cursors.Arrow
     End Sub
 
@@ -240,12 +265,20 @@ Public Class FrmWave
     End Sub
 
     Private Sub btnWAVETop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnWAVETop.MouseLeave
-        btnWAVETop.Opacity = 1
+        If waveTopEnabled = True Then
+        Else
+            btnWAVETop.Opacity = 1
+        End If
+
         Me.Cursor = Cursors.Arrow
     End Sub
 
     Private Sub btnPulseTop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnPULSETop.MouseLeave
-        btnPULSETop.Opacity = 1
+        If pulseTopEnabled = True Then
+        Else
+            btnPULSETop.Opacity = 1
+        End If
+
         Me.Cursor = Cursors.Arrow
     End Sub
     Private Sub btnPulseTop_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnPULSETop.MouseEnter
@@ -315,8 +348,7 @@ Public Class FrmWave
 
     Private Sub btnSincro_Click(sender As Object, e As RoutedEventArgs) Handles btnSincro.Click
         If staticLogoEnabled = True And staticTopEnabled = True Then
-
-
+            porta.Write("#R" & corPadrao.R & "G" & corPadrao.G & "B" & corPadrao.B & "S0")
         ElseIf waveLogoEnabled = True And waveTopEnabled = True Then
             porta.Write("@0D5S0")
         ElseIf pulseLogoEnabled = True And pulseTopEnabled = True Then
@@ -394,12 +426,14 @@ Public Class FrmWave
     Public Function verifySincro()
 
         If staticLogoEnabled = True And staticTopEnabled = True Then
-
+            btnSincro.Visibility = Visibility.Visible
 
         ElseIf waveLogoEnabled = True And waveTopEnabled = True Then
             btnSincro.Visibility = Visibility.Visible
         ElseIf pulseLogoEnabled = True And pulseTopEnabled = True Then
             btnSincro.Visibility = Visibility.Visible
+        Else
+            btnSincro.Visibility = Visibility.Hidden
         End If
 
 
