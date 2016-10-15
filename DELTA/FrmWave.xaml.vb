@@ -27,14 +27,15 @@ Public Class FrmWave
         Me.WindowState = WindowState.Minimized
     End Sub
 #End Region
-    Private Sub ColorPicker_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?))
+    Private Sub ColorPicker_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?)) Handles colorpickerLogo.SelectedColorChanged
         Dim BrushColor As Brush
         Dim selectColor As Color = colorpickerLogo.SelectedColor.GetValueOrDefault
         BrushColor = New SolidColorBrush(selectColor)
         cnvsGabinete.Background = BrushColor
         Try
-            System.Threading.Thread.Sleep(150)
-            porta.Write("#R" & selectColor.R & "G" & selectColor.G & "B" & selectColor.B & "S0")
+            System.Threading.Thread.Sleep(200)
+
+            porta.Write("#R" & selectColor.R & "G" & selectColor.G & "B" & selectColor.B & "S1")
 
 
         Catch ex As Exception
@@ -42,6 +43,21 @@ Public Class FrmWave
         End Try
 
 
+    End Sub
+    Private Sub colorpickerTop_SelectedColorChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Color?)) Handles colorpickerTop.SelectedColorChanged
+        Dim BrushColor As Brush
+        Dim selectColor As Color = colorpickerLogo.SelectedColor.GetValueOrDefault
+        BrushColor = New SolidColorBrush(selectColor)
+        cnvsGabinete.Background = BrushColor
+        Try
+            System.Threading.Thread.Sleep(200)
+
+            porta.Write("#R" & selectColor.R & "G" & selectColor.G & "B" & selectColor.B & "S2")
+
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub btnClose_MouseLeftButtonDown(sender As Object, e As RoutedEventArgs) Handles btnClose.Click
@@ -68,14 +84,22 @@ Public Class FrmWave
             If incomingData.Contains("WAVE DEVICE") Then
                 lblDeviceStatus.Content = ""
                 cnvsDeviceStatus.ToolTip = "Dispositivo Conectado"
-                cnvsButtons.Visibility = Visibility.Visible
+                cnvsButtonsLogo.Visibility = Visibility.Visible
                 colorpickerLogo.Visibility = Visibility.Visible
+                colorpickerTop.Visibility = Visibility.Visible
+                cnvsLogoTip.Visibility = Visibility.Visible
+                cnvsButtonsTop.Visibility = Visibility.Visible
+                cnvsTopTip.Visibility = Visibility.Visible
 
             Else
                 lblDeviceStatus.Content = ""
                 cnvsDeviceStatus.ToolTip = "Dispositivo Desconectado"
-                cnvsButtons.Visibility = Visibility.Hidden
+                cnvsButtonsLogo.Visibility = Visibility.Hidden
                 colorpickerLogo.Visibility = Visibility.Hidden
+                colorpickerTop.Visibility = Visibility.Hidden
+                cnvsLogoTip.Visibility = Visibility.Hidden
+                cnvsButtonsTop.Visibility = Visibility.Hidden
+                cnvsTopTip.Visibility = Visibility.Hidden
 
                 porta.Close()
             End If
@@ -127,7 +151,8 @@ Public Class FrmWave
 
             Next
             If SeP = "" Then
-
+                lblDeviceStatus.Content = ""
+                cnvsDeviceStatus.ToolTip = "Dispositivo Desconectado"
             End If
 
         Catch ex As Exception
@@ -197,19 +222,48 @@ Public Class FrmWave
         Me.Cursor = Cursors.Hand
     End Sub
 
+    Private Sub btnSTATICTop_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnSTATICTop.MouseEnter
+        btnSTATICTop.Opacity = 0.4
+        Me.Cursor = Cursors.Hand
+    End Sub
+
+    Private Sub btnSTATICTop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnSTATICTop.MouseLeave
+        btnSTATICTop.Opacity = 1
+        Me.Cursor = Cursors.Arrow
+    End Sub
+
+    Private Sub btnWAVETop_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnWAVETop.MouseEnter
+        btnWAVETop.Opacity = 0.4
+        Me.Cursor = Cursors.Hand
+    End Sub
+
+    Private Sub btnWAVETop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnWAVETop.MouseLeave
+        btnWAVETop.Opacity = 1
+        Me.Cursor = Cursors.Arrow
+    End Sub
+
+    Private Sub btnPulseTop_MouseLeave(sender As Object, e As MouseEventArgs) Handles btnPULSETop.MouseLeave
+        btnPULSETop.Opacity = 1
+        Me.Cursor = Cursors.Arrow
+    End Sub
+    Private Sub btnPulseTop_MouseEnter(sender As Object, e As MouseEventArgs) Handles btnPULSETop.MouseEnter
+        btnPULSETop.Opacity = 0.4
+        Me.Cursor = Cursors.Hand
+    End Sub
+
 
 
 
 #End Region
     Private Sub btnSTATIC_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnSTATIC.MouseLeftButtonDown
-        porta.Write("@1D5S0")
+        porta.Write("@1D5S1")
         System.Threading.Thread.Sleep(100)
         colorpickerLogo.Visibility = Visibility.Visible
         cnvsGabineteChroma.Visibility = Visibility.Hidden
     End Sub
 
     Private Sub btnWAVE_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnWAVE.MouseLeftButtonDown
-        porta.Write("@0D5S0")
+        porta.Write("@0D5S1")
         System.Threading.Thread.Sleep(100)
         colorpickerLogo.Visibility = Visibility.Hidden
         cnvsGabineteChroma.Visibility = Visibility.Visible
@@ -217,9 +271,35 @@ Public Class FrmWave
     End Sub
 
     Private Sub btnPULSE_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnPULSE.MouseLeftButtonDown
-        porta.Write("@2D5S0")
+        porta.Write("@2D5S1")
         System.Threading.Thread.Sleep(100)
         colorpickerLogo.Visibility = Visibility.Visible
         cnvsGabineteChroma.Visibility = Visibility.Hidden
     End Sub
+    Private Sub btnSTATICTop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnSTATICTop.MouseLeftButtonDown
+        porta.Write("@1D5S2")
+        System.Threading.Thread.Sleep(100)
+        colorpickerTop.Visibility = Visibility.Visible
+        TopChroma.Visibility = Visibility.Hidden
+        TOP.Visibility = Visibility.Visible
+    End Sub
+
+    Private Sub btnWAVETop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnWAVETop.MouseLeftButtonDown
+        porta.Write("@0D5S2")
+        System.Threading.Thread.Sleep(100)
+        colorpickerTop.Visibility = Visibility.Hidden
+        TopChroma.Visibility = Visibility.Visible
+        TOP.Visibility = Visibility.Hidden
+
+    End Sub
+
+    Private Sub btnPULSETop_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles btnPULSETop.MouseLeftButtonDown
+        porta.Write("@2D5S2")
+        System.Threading.Thread.Sleep(100)
+        colorpickerTop.Visibility = Visibility.Visible
+        TopChroma.Visibility = Visibility.Hidden
+        TOP.Visibility = Visibility.Visible
+    End Sub
+
+
 End Class

@@ -7,8 +7,8 @@
     <ProjectGuid>{E74FFD07-D0B5-42F5-870C-B25BD2B62B97}</ProjectGuid>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DELTA</RootNamespace>
-    <AssemblyName>DELTA</AssemblyName>
+    <RootNamespace>WAVE</RootNamespace>
+    <AssemblyName>WAVE</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -21,7 +21,7 @@
     <DefineTrace>true</DefineTrace>
     <IncrementalBuild>true</IncrementalBuild>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>DELTA.xml</DocumentationFile>
+    <DocumentationFile>WAVE.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -33,7 +33,7 @@
     <IncrementalBuild>false</IncrementalBuild>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>DELTA.xml</DocumentationFile>
+    <DocumentationFile>WAVE.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -47,6 +47,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>WAVE ICO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
@@ -184,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="spiral-rainbow-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WAVE ICO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="machine logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

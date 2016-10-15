@@ -2,104 +2,104 @@
 <doc>
 <assembly>
 <name>
-DELTA
+WAVE
 </name>
 </assembly>
 <members>
-<member name="T:DELTA.FrmHome">
+<member name="T:WAVE.FrmHome">
 <summary>
 FrmHome
 </summary>
 </member>
-<member name="M:DELTA.FrmHome.InitializeComponent">
+<member name="M:WAVE.FrmHome.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
 </member>
-<member name="T:DELTA.Application">
+<member name="T:WAVE.Application">
 <summary>
 Application
 </summary>
 </member>
-<member name="M:DELTA.Application.InitializeComponent">
+<member name="M:WAVE.Application.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
 </member>
-<member name="M:DELTA.Application.Main">
+<member name="M:WAVE.Application.Main">
 <summary>
 Application Entry Point.
 </summary>
 </member>
-<member name="T:DELTA.FrmWave">
+<member name="T:WAVE.FrmWave">
 <summary>
 FrmWave
 </summary>
 </member>
-<member name="M:DELTA.FrmWave.InitializeComponent">
+<member name="M:WAVE.FrmWave.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
 </member>
-<member name="T:DELTA.MainWindow">
+<member name="T:WAVE.MainWindow">
 <summary>
 MainWindow
 </summary>
 </member>
-<member name="M:DELTA.MainWindow.InitializeComponent">
+<member name="M:WAVE.MainWindow.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
 </member>
-<member name="T:DELTA.My.MyWpfExtension">
+<member name="T:WAVE.My.MyWpfExtension">
  <summary>
  Module used to define the properties that are available in the My Namespace for WPF
  </summary>
  <remarks></remarks>
 </member>
-<member name="P:DELTA.My.MyWpfExtension.Application">
+<member name="P:WAVE.My.MyWpfExtension.Application">
  <summary>
  Returns the application object for the running application
  </summary>
 </member>
-<member name="P:DELTA.My.MyWpfExtension.Computer">
+<member name="P:WAVE.My.MyWpfExtension.Computer">
  <summary>
  Returns information about the host computer.
  </summary>
 </member>
-<member name="P:DELTA.My.MyWpfExtension.User">
+<member name="P:WAVE.My.MyWpfExtension.User">
  <summary>
  Returns information for the current user.  If you wish to run the application with the current 
  Windows user credentials, call My.User.InitializeWithWindowsUser().
  </summary>
 </member>
-<member name="P:DELTA.My.MyWpfExtension.Log">
+<member name="P:WAVE.My.MyWpfExtension.Log">
  <summary>
  Returns the application log. The listeners can be configured by the application's configuration file.
  </summary>
 </member>
-<member name="P:DELTA.My.MyWpfExtension.Windows">
+<member name="P:WAVE.My.MyWpfExtension.Windows">
  <summary>
  Returns the collection of Windows defined in the project.
  </summary>
 </member>
-<member name="T:DELTA.My.Resources.Resources">
+<member name="T:WAVE.My.Resources.Resources">
 <summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
 </member>
-<member name="P:DELTA.My.Resources.Resources.ResourceManager">
+<member name="P:WAVE.My.Resources.Resources.ResourceManager">
 <summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
 </member>
-<member name="P:DELTA.My.Resources.Resources.Culture">
+<member name="P:WAVE.My.Resources.Resources.Culture">
 <summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="P:DELTA.My.Resources.Resources.logoDELTA">
+<member name="P:WAVE.My.Resources.Resources.logoDELTA">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

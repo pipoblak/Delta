@@ -11,5 +11,5 @@
 Option Strict Off
 Option Explicit On
 
-<Assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("wave%20ico.ico")> 
+<Assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("machine%20logo.png")> 
 

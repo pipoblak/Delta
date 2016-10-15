@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DELTA"
+        xmlns:local="clr-namespace:WAVE"
         mc:Ignorable="d"
         Title="FrmHome" Height="536" Width="910" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded">
     <Window.Resources>

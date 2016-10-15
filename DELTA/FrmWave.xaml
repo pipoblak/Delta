@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DELTA"
+        xmlns:local="clr-namespace:WAVE"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="window" x:Class="FrmWave"
         mc:Ignorable="d"
-         Title="FrmHome" Height="536" Width="910" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded_1">
+         Title="Wave" Height="536" Width="910" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded_1" Icon="WAVE ICO.ico">
     <Window.Resources>
         <Storyboard x:Key="OnLoaded1">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
@@ -17,7 +17,7 @@
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+            <BeginStoryboard x:Name="OnLoaded1_BeginStoryboard" Storyboard="{StaticResource OnLoaded1}"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -35,25 +35,41 @@
 
             <Canvas x:Name="cnvsDeviceStatus" Height="43.5" Width="50.718" RenderTransformOrigin="0.496,0.472" Canvas.Left="856.782" Canvas.Top="489" ToolTip="Dispositivo Desconectado">
                 <Label Content="&#xF108;" FontFamily="FontAwesome" Foreground="White" FontSize="32" Canvas.Left="-4.5" />
-                <Label x:Name="lblDeviceStatus" Content="&#xF057;" FontFamily="FontAwesome" Foreground="White" FontSize="13.333" Canvas.Left="28.5" Canvas.Top="22.5" />
+                <Label x:Name="lblDeviceStatus" Content="&#xF021;" FontFamily="FontAwesome" Foreground="White" FontSize="13.333" Canvas.Left="28.5" Canvas.Top="22.5" />
 
             </Canvas>
 
-            <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="910.5" Canvas.Top="423" Canvas.Left="0.5"/>
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="910.5" Canvas.Top="423" Canvas.Left="0.5">
+                <Path Data="M712.5,10.668" Fill="White" HorizontalAlignment="Right" Height="1" Margin="0,10.668,197,0" Stretch="Fill" Stroke="White" VerticalAlignment="Top" Width="1"/>
+            </Border>
 
-            <Canvas Height="252" Width="232.5" RenderTransformOrigin="0.452,0.496" Canvas.Left="331" Canvas.Top="108">
+            <Canvas x:Name="canvas" Height="252" Width="232.5" RenderTransformOrigin="0.452,0.496" Canvas.Left="331" Canvas.Top="108">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
 
                 <Canvas x:Name="cnvsGabinete" Height="112.5" Width="70.5" Canvas.Left="37.5" Canvas.Top="105.5" Background="White"/>
-                <Canvas x:Name="cnvsGabineteChroma" Height="35.5" Width="28.5" Canvas.Left="56.5" Canvas.Top="163.5">
+                <Canvas x:Name="cnvsGabineteChroma" Height="35.5" Width="28.5" Canvas.Left="56.5" Canvas.Top="163.5" Visibility="Hidden">
                     <Canvas.Background>
                         <ImageBrush ImageSource="spiral-rainbow-background.jpg" Stretch="UniformToFill"/>
                     </Canvas.Background>
                 </Canvas>
                 <Image x:Name="image" Canvas.Top="0.668" Source="manta.png" Stretch="Fill" Height="243" Width="230"/>
-                <xctk:ColorPicker x:Name="colorpickerLogo" Width="102" Background="White" BorderBrush="Gainsboro" AvailableColorsHeader="Cores Padrão" StandardColorsHeader="Cores Padrão" UsingAlphaChannel="False" RecentColorsHeader="Cores Recentes" SelectedColor="White" SelectedColorChanged="ColorPicker_SelectedColorChanged" Height="22" Canvas.Left="279.833" Canvas.Top="117.667" Visibility="Hidden" StandardButtonHeader="Cores Padrão" ShowStandardColors="False" ColorMode="ColorCanvas" AvailableColorsSortingMode="HueSaturationBrightness"/>
+                <Path x:Name="TOP" Data="M28,83.668 C9.499966,105.16842 23.5,97.167999 24.5,101.168 25.5,105.168 135.50001,67.167999 138.50001,62.167999 141.50001,57.167999 132.50001,28.16767 132.50001,28.16767 132.50001,28.16767 46.500034,62.167585 28,83.668 z" Height="74.294" Canvas.Left="18.485" Stretch="Fill" Canvas.Top="28.168" Width="121.627" Opacity="0.2" Fill="White"/>
+                <Path x:Name="TopChroma" Data="M28,83.668 C9.499966,105.16842 23.5,97.167999 24.5,101.168 25.5,105.168 135.50001,67.167999 138.50001,62.167999 141.50001,57.167999 132.50001,28.16767 132.50001,28.16767 132.50001,28.16767 46.500034,62.167585 28,83.668 z" Height="74.294" Canvas.Left="18.485" Stretch="Fill" Canvas.Top="28.168" Width="121.627" Opacity="0.2" Visibility="Hidden">
+                    <Path.Fill>
+                        <ImageBrush ImageSource="spiral-rainbow-background.jpg"/>
+                    </Path.Fill>
+                </Path>
 
             </Canvas>
-            <Canvas x:Name="cnvsButtons" Height="268" Width="70" Canvas.Left="218" Canvas.Top="99" Visibility="Hidden">
+            <xctk:ColorPicker x:Name="colorpickerLogo" Width="102" Background="White" BorderBrush="Gainsboro" AvailableColorsHeader="Cores Padrão" StandardColorsHeader="Cores Padrão" UsingAlphaChannel="False" RecentColorsHeader="Cores Recentes" SelectedColor="White" SelectedColorChanged="ColorPicker_SelectedColorChanged" Height="22" Canvas.Left="78.833" Canvas.Top="227.667" StandardButtonHeader="Cores Padrão" ShowStandardColors="False" ColorMode="ColorCanvas" AvailableColorsSortingMode="HueSaturationBrightness" Visibility="Hidden"/>
+            <Canvas x:Name="cnvsButtonsLogo" Height="268" Width="70" Canvas.Left="218" Canvas.Top="99" Visibility="Hidden">
                 <Canvas x:Name="btnSTATIC" Height="50" Width="50" Canvas.Left="11" Canvas.Top="17">
 
                     <Ellipse Height="50" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
@@ -75,7 +91,54 @@
                 </Canvas>
 
             </Canvas>
-            <TextBlock x:Name="txtStatus" Canvas.Left="2" TextWrapping="Wrap" Canvas.Top="517.668" Width="906.29" HorizontalAlignment="Center" TextAlignment="Center" Foreground="Red"/>
+            <Canvas x:Name="cnvsLogoTip" Height="117.506" Canvas.Left="123.333" Canvas.Top="292.668" Width="242.667" Visibility="Hidden">
+                <Ellipse Fill="#FFF4F4F5" Height="7" Canvas.Left="235.667" Width="7"/>
+                <Path Data="M363,296.668 L219.21544,296.668" Fill="White" Height="1" Canvas.Left="171.882" Stretch="Fill" Stroke="White" Canvas.Top="3" Width="65.785"/>
+                <Path Data="M296.25,295.918 L296.25,402.94895" Fill="White" Height="108.031" Canvas.Left="172.417" Stretch="Fill" Stroke="White" Canvas.Top="3.25" Width="1"/>
+                <Path Data="M295.5,402.668 L56.397513,402.668" Fill="White" Height="1" Canvas.Left="53.732" Stretch="Fill" Stroke="White" Canvas.Top="110" Width="119.435"/>
+                <TextBlock  TextWrapping="Wrap" Text="LOGO" Canvas.Top="101.666" Foreground="White" FontFamily="Earth Orbiter" FontSize="16"/>
+            </Canvas>
+            <Canvas x:Name="cnvsTopTip" Height="208.506" Canvas.Left="403.333" Canvas.Top="45.668" Width="405.667" Visibility="Hidden">
+                <Ellipse Fill="#FFF4F4F5" Height="7" Canvas.Left="48.667" Width="7" Canvas.Top="107"/>
+                <Path Data="M363,296.668 L219.21544,296.668" Fill="White" Height="2.352" Canvas.Left="195.84" Stretch="Fill" Stroke="White" Canvas.Top="56.49" Width="154.785"/>
+                <Path Data="M320.604,405.59618 L320.604,512.62713" Fill="White" Height="53.802" Canvas.Left="195.667" Stretch="Fill" Stroke="White" Canvas.Top="56.698" Width="1" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path Data="M295.5,402.668 L56.397513,402.668" Fill="White" Height="1" Canvas.Left="53.732" Stretch="Fill" Stroke="White" Canvas.Top="110" Width="143.435"/>
+                <TextBlock  TextWrapping="Wrap" Text="TOP" Canvas.Top="49.666" Foreground="White" FontFamily="Earth Orbiter" FontSize="16" Canvas.Left="354.495"/>
+            </Canvas>
+            <Canvas x:Name="cnvsButtonsTop" Height="268" Width="70" Canvas.Left="603" Canvas.Top="99" Visibility="Hidden">
+                <Canvas x:Name="btnSTATICTop" Height="50" Width="50" Canvas.Left="11" Canvas.Top="17">
+
+                    <Ellipse Height="50" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
+                    <TextBlock  Canvas.Left="6" TextWrapping="Wrap" Text="STATIC" Canvas.Top="19.668" Foreground="White" FontFamily="Earth Orbiter" FontSize="9.333"/>
+
+                </Canvas>
+                <Canvas x:Name="btnWAVETop" Height="53" Width="54" Canvas.Left="9" Canvas.Top="115">
+
+                    <Ellipse Height="50" Canvas.Left="2" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
+                    <TextBlock Canvas.Left="13" TextWrapping="Wrap" Text="WAVE" Canvas.Top="20.668" Foreground="White" FontFamily="Earth Orbiter" FontSize="9.333"/>
+
+                </Canvas>
+
+                <Canvas x:Name="btnPULSETop" Height="53" Width="54" Canvas.Left="9" Canvas.Top="208">
+
+                    <Ellipse Height="50" Canvas.Left="2" Stroke="White" Canvas.Top="-0.332" Width="50" Fill="#FF151515"/>
+                    <TextBlock Canvas.Left="12" TextWrapping="Wrap" Text="PULSe" Canvas.Top="20.668" Foreground="White" FontFamily="Earth Orbiter" FontSize="9.333"/>
+
+                </Canvas>
+
+            </Canvas>
+            <xctk:ColorPicker x:Name="colorpickerTop" Width="102" Background="White" BorderBrush="Gainsboro" AvailableColorsHeader="Cores Padrão" StandardColorsHeader="Cores Padrão" UsingAlphaChannel="False" RecentColorsHeader="Cores Recentes" SelectedColor="White" Height="22" Canvas.Left="711.833" Canvas.Top="227.667" StandardButtonHeader="Cores Padrão" ShowStandardColors="False" ColorMode="ColorCanvas" AvailableColorsSortingMode="HueSaturationBrightness" Visibility="Hidden"/>
+            <Image x:Name="image1" Height="160" Canvas.Left="375" Canvas.Top="413.668" Width="160" Source="machine logo.png"/>
+
         </Canvas>
 
 

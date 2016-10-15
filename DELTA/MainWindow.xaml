@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DELTA"
+        xmlns:local="clr-namespace:WAVE"
         mc:Ignorable="d"
         Title="MainWindow" Height="360" Width="360" Background="{x:Null}" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" FontFamily="Corbel" VerticalAlignment="Center" HorizontalAlignment="Center">
     <Window.Resources>
